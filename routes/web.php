@@ -17,6 +17,11 @@ Route::prefix('students')->group(function () {
     Route::get('/student/{id}', [StudentController::class, 'show']);
 });
 
-Route::get('/class', [ClassController::class, 'index']);
+
+Route::prefix('class')->group(function(){
+    Route::get('/', [ClassController::class, 'index']);
+    Route::get('/class/{id}', [ClassController::class, 'show']);
+});
+
 Route::get('/extracuricular', [ExtracuricularController::class, 'index']);
 Route::get('/teachers', [TeacherController::class, 'index']);
