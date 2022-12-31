@@ -14,14 +14,19 @@ Route::get('/', function () {
 
 Route::prefix('students')->group(function () {
     Route::get('/', [StudentController::class, 'index']);
-    Route::get('/student/{id}', [StudentController::class, 'show']);
+    Route::get('/{id}', [StudentController::class, 'show']);
 });
 
 
 Route::prefix('class')->group(function(){
     Route::get('/', [ClassController::class, 'index']);
-    Route::get('/class/{id}', [ClassController::class, 'show']);
+    Route::get('/{id}', [ClassController::class, 'show']);
 });
 
-Route::get('/extracuricular', [ExtracuricularController::class, 'index']);
+Route::prefix('extracuricular')->group(function() {
+    Route::get('/', [ExtracuricularController::class, 'index']);
+    Route::get('/{id}', [ExtracuricularController::class, 'show']);
+});
+
+
 Route::get('/teachers', [TeacherController::class, 'index']);

@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
-                    <td> <a href="">detail</a> </td>
+                    <td> <a href="/extracuricular/{{ $item->id }}">detail</a> </td>
                 </tr>
             @endforeach
         </tbody>

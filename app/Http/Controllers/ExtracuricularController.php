@@ -13,4 +13,10 @@ class ExtracuricularController extends Controller
         $ekskul = Extracuricular::get();
         return view('extracuricular.extracuricular', ['ekskulList' => $ekskul]);
     }
+
+    public function show($id)
+    {
+        $ekskul = Extracuricular::with('students')->findOrFail($id);
+        return view('extracuricular.extracuricular-detail', ['ekskul' => $ekskul]);
+    }
 }

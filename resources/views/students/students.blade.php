@@ -21,7 +21,7 @@
                     <td> {{ $item->name }}</td>
                     <td> {{ $item->gender }}</td>
                     <td> {{ $item->nis }}</td>
-                    <td> <a href="/students/student/{{ $item->id }}">detail</a> </td>
+                    <td> <a href="/students/{{ $item->id }}">detail</a> </td>
                 </tr>
             @endforeach
         </tbody>
