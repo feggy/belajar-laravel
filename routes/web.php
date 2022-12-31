@@ -29,4 +29,7 @@ Route::prefix('extracuricular')->group(function() {
 });
 
 
-Route::get('/teachers', [TeacherController::class, 'index']);
+Route::prefix('teachers')->group(function() {
+    Route::get('/', [TeacherController::class, 'index']);
+    Route::get('/{id}', [TeacherController::class, 'show']);
+});

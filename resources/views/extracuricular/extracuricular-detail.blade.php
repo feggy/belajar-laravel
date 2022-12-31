@@ -7,12 +7,16 @@
 
     <h5 class="mt-4">Daftar Siswa</h5>
 
-    @foreach ($ekskul->students as $item)
-        {{ $loop->iteration }}. {{ $item->name }} @if ($item->gender == 'P')
-            (Perempuan)
-        @else
-            (Laki-laki)
-        @endif <br>
-    @endforeach
+    <ol>
+        @foreach ($ekskul->students as $item)
+            <li>
+                {{ $item->name }} @if ($item->gender == 'P')
+                    (Perempuan)
+                @else
+                    (Laki-laki)
+                @endif
+            </li>
+        @endforeach
+    </ol>
 
 @endsection
