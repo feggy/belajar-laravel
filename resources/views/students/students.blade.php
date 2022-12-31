@@ -3,6 +3,7 @@
 @section('title', 'Students')
 
 @section('content')
+    <h1>Halaman Students</h1>
     <table class="table">
         <thead>
             <tr>
@@ -10,9 +11,7 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>NIS</th>
-                <th>Class</th>
-                <th>Extracurriculars</th>
-                <th>Teacher</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -22,13 +21,7 @@
                     <td> {{ $item->name }}</td>
                     <td> {{ $item->gender }}</td>
                     <td> {{ $item->nis }}</td>
-                    <td> {{ $item->class->name }}</td>
-                    <td>
-                        @foreach ($item->extracurriculars as $ekskul)
-                            - {{ $ekskul->name }} <br>
-                        @endforeach
-                    </td>
-                    <td>{{ $item->class->teacher->name }}</td>
+                    <td> <a href="/students/student/{{ $item->id }}">detail</a> </td>
                 </tr>
             @endforeach
         </tbody>

@@ -10,7 +10,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/students', [StudentController::class, 'index']);
+
+
+Route::prefix('students')->group(function () {
+    Route::get('/', [StudentController::class, 'index']);
+    Route::get('/student/{id}', [StudentController::class, 'show']);
+});
+
 Route::get('/class', [ClassController::class, 'index']);
 Route::get('/extracuricular', [ExtracuricularController::class, 'index']);
 Route::get('/teachers', [TeacherController::class, 'index']);
