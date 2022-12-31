@@ -17,6 +17,11 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
+                    <td>
+                        @foreach ($item->students as $student)
+                            - {{ $student->name }} <br>
+                        @endforeach
+                    </td>
                 </tr>
             @endforeach
         </tbody>
