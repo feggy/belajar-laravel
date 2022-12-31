@@ -26,10 +26,15 @@
         </tr>
     </table>
 
-    <h4 class="mt-5">Extracurriculars</h4>
-    @foreach ($student->extracurriculars as $item)
-        - {{ $item->name }} <br>
-    @endforeach
+    @if ($student->extracurriculars->isNotEmpty())
+        <h4 class="mt-5">Extracurriculars</h4>
+        <ol>
+            @foreach ($student->extracurriculars as $item)
+                <li>{{ $item->name }}</li>
+            @endforeach
+        </ol>
+    @endif
+
 
     <style>
         th {
