@@ -17,7 +17,7 @@
     <header>
         @include('shared.navbar')
     </header>
-    <main class="container">
+    <main class="container mt-5">
         @yield('content')
     </main>
     <footer>

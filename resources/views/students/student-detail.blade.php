@@ -5,7 +5,7 @@
 @section('content')
     <h2>Detail Siswa {{ $student->name }}</h2>
 
-    <table class="table table-bordered mt-5">
+    <table class="table table-bordered">
         <tr>
             <th>NIS</th>
             <th>Gender</th>
@@ -25,6 +25,11 @@
             <td>{{ $student->class->teacher->name }}</td>
         </tr>
     </table>
+
+    <h4 class="mt-5">Extracurriculars</h4>
+    @foreach ($student->extracurriculars as $item)
+        - {{ $item->name }} <br>
+    @endforeach
 
     <style>
         th {
