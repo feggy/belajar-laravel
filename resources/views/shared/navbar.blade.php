@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/class" aria-current="page">Class</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/extracuricular" aria-current="page">Extracurricular</a>
+                </li>
             </ul>
             <form class="d-flex my-2 my-lg-0">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
