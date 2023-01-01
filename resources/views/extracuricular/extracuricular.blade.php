@@ -5,6 +5,10 @@
 @section('content')
     <h1>Halaman Extracurricular</h1>
 
+    <div class="my-5">
+        <a href="" class="btn btn-primary">Add Data</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>

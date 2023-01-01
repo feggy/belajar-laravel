@@ -13,7 +13,7 @@ class StoreStudentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,25 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nis' => 'unique:students|max:5|required',
+            'name' => 'required',
+            'gender' => 'required',
+            'class_id' => 'required'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'class_id' => 'class'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nis.required' => 'NIS tidak boleh kosong.',
+            'nis.max' => 'NIS harus :max angka'
         ];
     }
 }

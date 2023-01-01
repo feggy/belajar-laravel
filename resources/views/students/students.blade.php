@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>Halaman Students</h1>
+
+    <div class="my-5">
+        <a href="/students/form-add" class="btn btn-primary">Add Data</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +26,10 @@
                     <td> {{ $item->name }}</td>
                     <td> {{ $item->gender }}</td>
                     <td> {{ $item->nis }}</td>
-                    <td> <a href="/students/{{ $item->id }}">detail</a> </td>
+                    <td>
+                        <a href="/students/details/{{ $item->id }}">detail</a>
+                        <a href="/students/form-edit/{{ $item->id }}">edit</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
