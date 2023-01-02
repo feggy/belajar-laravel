@@ -53,4 +53,35 @@ class StudentController extends Controller
         $student = Student::findOrFail($id)->update($request->all());
         return redirect('/students');
     }
+
+    public function delete($id)
+    {
+        $student = Student::findOrfail($id);
+        return view('students.student-delete', ['student' => $student]);
+    }
+
+    public function destroy($id)
+    {
+        $delete = Student::query()->findOrFail($id);
+        $delete->delete();
+
+        if ($delete) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'delete student success!');
+        }
+
+        return redirect('/students');
+    }
+
+    public function deletedStudent()
+    {
+        $students = Student::onlyTrashed()->get();
+        return view('students.students-deleted', ['students' => $students]);
+    }
+
+    public function restore($id)
+    {
+        $student = Student::withTrashed()->where('id', $id)->restore();
+        return redirect('/students');
+    }
 }

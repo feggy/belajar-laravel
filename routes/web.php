@@ -19,6 +19,10 @@ Route::prefix('students')->group(function () {
     Route::post('/add-new', [StudentController::class, 'store']);
     Route::get('/form-edit/{id}', [StudentController::class, 'edit']);
     Route::put('/form-edit/update/{id}', [StudentController::class, 'update']);
+    Route::get('/student-delete/{id}', [StudentController::class, 'delete']);
+    Route::delete('/student-destroy/{id}', [StudentController::class, 'destroy']);
+    Route::get('/student-deleted', [StudentController::class, 'deletedStudent']);
+    Route::get('/student/{id}/restore', [StudentController::class, 'restore']);
 });
 
 
