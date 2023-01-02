@@ -11,9 +11,16 @@ use Illuminate\Support\Facades\Session;
 class StudentController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $students = Student::get();
+        $keyword = $request->keyword;
+        $students = Student::query()
+            ->where('name', 'LIKE', '%' . $keyword . '%')
+            ->orWhere('nis', 'LIKE', '%' . $keyword . '%')
+            ->orWhereHas('class', function($query) use($keyword) {
+                $query->where('name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->paginate(20);
         return view('students.students', ['students' => $students]);
     }
 
