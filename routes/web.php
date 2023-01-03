@@ -30,7 +30,6 @@ Route::controller(StudentController::class)->middleware('auth')->group(function 
     });
 });
 
-
 Route::prefix('class')->group(function () {
     Route::get('/', [ClassController::class, 'index']);
     Route::get('/{id}', [ClassController::class, 'show']);
@@ -40,7 +39,6 @@ Route::prefix('extracuricular')->group(function () {
     Route::get('/', [ExtracuricularController::class, 'index']);
     Route::get('/{id}', [ExtracuricularController::class, 'show']);
 });
-
 
 Route::prefix('teachers')->group(function () {
     Route::get('/', [TeacherController::class, 'index']);
