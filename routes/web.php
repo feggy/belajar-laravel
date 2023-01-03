@@ -15,17 +15,19 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'authenticating']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
-Route::prefix('students')->group(function () {
-    Route::get('/', [StudentController::class, 'index'])->middleware('auth');
-    Route::get('/details/{id}', [StudentController::class, 'show']);
-    Route::get('/form-add', [StudentController::class, 'create']);
-    Route::post('/add-new', [StudentController::class, 'store']);
-    Route::get('/form-edit/{id}', [StudentController::class, 'edit']);
-    Route::put('/form-edit/update/{id}', [StudentController::class, 'update']);
-    Route::get('/student-delete/{id}', [StudentController::class, 'delete']);
-    Route::delete('/student-destroy/{id}', [StudentController::class, 'destroy']);
-    Route::get('/student-deleted', [StudentController::class, 'deletedStudent']);
-    Route::get('/student/{id}/restore', [StudentController::class, 'restore']);
+Route::controller(StudentController::class)->middleware('auth')->group(function () {
+    Route::prefix('students')->group(function () {
+        Route::get('/', 'index');
+        Route::get('/details/{id}', 'show');
+        Route::get('/form-add', 'create');
+        Route::post('/add-new', 'store');
+        Route::get('/form-edit/{id}', 'edit');
+        Route::put('/form-edit/update/{id}', 'update');
+        Route::get('/student-delete/{id}', 'delete');
+        Route::delete('/student-destroy/{id}', 'destroy');
+        Route::get('/student-deleted', 'deletedStudent');
+        Route::get('/student/{id}/restore', 'restore');
+    });
 });
 
 
