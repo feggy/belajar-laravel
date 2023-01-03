@@ -17,7 +17,7 @@ class StudentController extends Controller
         $students = Student::query()
             ->where('name', 'LIKE', '%' . $keyword . '%')
             ->orWhere('nis', 'LIKE', '%' . $keyword . '%')
-            ->orWhereHas('class', function($query) use($keyword) {
+            ->orWhereHas('class', function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', '%' . $keyword . '%');
             })
             ->paginate(20);
@@ -38,6 +38,15 @@ class StudentController extends Controller
 
     public function store(StoreStudentRequest $request)
     {
+        $pictureName = '';
+
+        if ($request->file('photo')) {
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $pictureName = $request->name . '-' . now()->timestamp . '.' . $extension;
+            $request->file('photo')->storeAs('photo', $pictureName);
+        }
+
+        $request['image'] = $pictureName;
         $student = Student::create($request->all());
 
         if ($student) {

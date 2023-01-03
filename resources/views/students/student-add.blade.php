@@ -20,7 +20,7 @@
     @endif
 
     <div class="mt-5 col-6">
-        <form action="add-new" method="POST">
+        <form action="add-new" method="POST", enctype="multipart/form-data">
             @csrf
             <div>
                 <label for="name">Name</label>
@@ -42,13 +42,20 @@
             </div>
 
             <div class="mt-3">
-                <label for="name">Kelas</label>
+                <label for="name">Class</label>
                 <select name="class_id" id="class" class="form-control">
                     <option value="">Pilih salah satu</option>
                     @foreach ($class as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="mt-3">
+                <label for="name">Photo</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="photo" name="photo">
+                  </div>
             </div>
 
             <div class="mt-3">

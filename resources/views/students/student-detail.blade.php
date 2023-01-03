@@ -5,6 +5,14 @@
 @section('content')
     <h2>Detail Siswa {{ $student->name }}</h2>
 
+    <div class="my-3 d-flex justify-content-center">
+        @if ($student->image != '')
+            <img src="{{ asset('storage/photo/' . $student->image) }}" alt="" height="200px">
+        @else
+            <img src="{{ asset('images/default.jpeg') }}" alt="" height="200px">
+        @endif
+    </div>
+
     <table class="table table-bordered">
         <tr>
             <th>NIS</th>
