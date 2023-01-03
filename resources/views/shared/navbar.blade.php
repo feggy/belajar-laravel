@@ -18,10 +18,7 @@
                     <a class="nav-link" href="/teachers" aria-current="page">Teachers</a>
                 </li>
             </ul>
-            <form class="d-flex my-2 my-lg-0">
-                <input class="form-control me-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <a class="btn btn-outline-light" href="/logout" role="button">Logout</a>
         </div>
     </div>
 </nav>

@@ -1,19 +1,22 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
-use App\Http\Controllers\ExtracuricularController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExtracuricularController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
-
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticating']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::prefix('students')->group(function () {
-    Route::get('/', [StudentController::class, 'index']);
+    Route::get('/', [StudentController::class, 'index'])->middleware('auth');
     Route::get('/details/{id}', [StudentController::class, 'show']);
     Route::get('/form-add', [StudentController::class, 'create']);
     Route::post('/add-new', [StudentController::class, 'store']);
