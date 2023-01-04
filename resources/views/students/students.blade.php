@@ -46,7 +46,9 @@
                     <td>
                         <a href="/students/details/{{ $item->id }}">detail</a>
                         <a href="/students/form-edit/{{ $item->id }}">edit</a>
-                        <a href="/students/student-delete/{{ $item->id }}">delete</a>
+                        @if (Auth::user()->role_id == 1)
+                            <a href="/students/student-delete/{{ $item->id }}">delete</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

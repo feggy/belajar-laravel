@@ -23,7 +23,7 @@ Route::controller(StudentController::class)->middleware('auth')->group(function 
         Route::post('/add-new', 'store');
         Route::get('/form-edit/{id}', 'edit');
         Route::put('/form-edit/update/{id}', 'update');
-        Route::get('/student-delete/{id}', 'delete');
+        Route::get('/student-delete/{id}', 'delete')->middleware('must-admin');
         Route::delete('/student-destroy/{id}', 'destroy');
         Route::get('/student-deleted', 'deletedStudent');
         Route::get('/student/{id}/restore', 'restore');
